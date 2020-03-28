@@ -7,24 +7,22 @@ styleUrls: ['./app.component.css']
 })
 export class AppComponent {
 
- newTask: string;
- taskList: Array<string> = [];
- doneTaskList: Array<string> = [];
+ taskListFromAppComponent: Array<string> = [];
+ doneTaskListFromAppComponent: Array<string> = [];
 
-  addNewTask() {
-    if(this.newTask !== undefined){
-      this.taskList.push(this.newTask);
+  addNewTaskFromAppComponent(task) {
+    if(task !== undefined){
+      this.taskListFromAppComponent.push(task);
     }
-    this.newTask = '';
   }
 
-  deleteTask(task){
-    this.taskList = this.taskList.filter( data => data !== task);
+  deleteTaskFromAppComponent(task){
+    this.taskListFromAppComponent = this.taskListFromAppComponent.filter( data => data !== task);
   }
 
-  isDone(task){
-    this.doneTaskList.push(task);
-    this.deleteTask(task);
+  isDoneFromAppComponent(task){
+    this.doneTaskListFromAppComponent.push(task);
+    this.deleteTaskFromAppComponent(task);
   }
 
 }

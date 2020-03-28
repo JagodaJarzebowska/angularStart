@@ -1,0 +1,13 @@
+<div>Task list:</div>
+<ng-container *ngIf="taskListFromToDoTaskComponent.length > 0; else noTask">
+  <ul *ngFor="let task of taskListFromToDoTaskComponent">
+    <li>
+      {{task}}
+      <button (click)="deleteTask(task)">Delete</button>
+      <button (click)="isDone(task)">Done</button>
+    </li>
+  </ul>
+</ng-container>
+<ng-template #noTask>
+  <p>You don't have any task ;)</p>
+</ng-template>
