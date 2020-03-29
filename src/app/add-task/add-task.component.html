@@ -1,4 +1,4 @@
 <div>
-  <input [(ngModel)]="newTask">
-  <button (click)="addNewTask()" [disabled]="!newTask">Add new task</button>
+  <input class="form-control form-control-lg" type="text"  placeholder="Task" [(ngModel)]="newTask">
+  <button  type="button" class="btn btn-primary" (click)="addNewTask()" [disabled]="!newTask">Add new task</button>
 </div>

@@ -3,8 +3,8 @@
   <ul *ngFor="let task of taskListFromToDoTaskComponent; let odd = odd">
     <li [ngClass]="{'odd-li': odd, 'last-li': taskListFromToDoTaskComponent.length === 1}">
       {{task}}
-      <button (click)="deleteTask(task)">Delete</button>
-      <button (click)="isDone(task)">Done</button>
+      <button type="button" class="btn btn-success" (click)="isDone(task)">Done</button>
+      <button type="button" class="btn btn-danger" (click)="deleteTask(task)">Delete</button>
     </li>
   </ul>
 </ng-container>
