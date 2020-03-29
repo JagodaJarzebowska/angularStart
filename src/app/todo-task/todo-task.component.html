@@ -1,7 +1,7 @@
-<div>Task list:</div>
+<p [ngStyle]="{color: getColor()}">ToDo Task {{taskListFromToDoTaskComponent.length}}</p>
 <ng-container *ngIf="taskListFromToDoTaskComponent.length > 0; else noTask">
-  <ul *ngFor="let task of taskListFromToDoTaskComponent">
-    <li>
+  <ul *ngFor="let task of taskListFromToDoTaskComponent; let odd = odd">
+    <li [ngClass]="{'odd-li': odd, 'last-li': taskListFromToDoTaskComponent.length === 1}">
       {{task}}
       <button (click)="deleteTask(task)">Delete</button>
       <button (click)="isDone(task)">Done</button>
