@@ -1,16 +1,19 @@
 <div>
   <div class="container">
-    <app-add-task (emitTaskFromAddTaskComponent)="addNewTaskFromAppComponent($event)"></app-add-task>
+<!--    <app-add-task (emitTaskFromAddTaskComponent)="addNewTaskFromAppComponent($event)"></app-add-task>-->
+    <app-add-task></app-add-task>
   </div>
 
   <div class="container">
-    <app-todo-task [taskListFromToDoTaskComponent]="taskListFromAppComponent"
-                   (emitDoneFromToDoTaskComponent)="isDoneFromAppComponent($event)"
-                   (emitRemoveFromToDoTaskComponent)="deleteTaskFromAppComponent($event)"></app-todo-task>
+<!--    <app-todo-task [taskListFromToDoTaskComponent]="taskListFromAppComponent"-->
+<!--                   (emitDoneFromToDoTaskComponent)="isDoneFromAppComponent($event)"-->
+<!--                   (emitRemoveFromToDoTaskComponent)="deleteTaskFromAppComponent($event)"></app-todo-task>-->
+  <app-todo-task></app-todo-task>
   </div>
 
   <div class="container">
-    <app-done-task [taskListFromDoneTaskComponent]="doneTaskListFromAppComponent"></app-done-task>
+<!--    <app-done-task [taskListFromDoneTaskComponent]="doneTaskListFromAppComponent"></app-done-task>-->
+    <app-done-task></app-done-task>
   </div>
 
 </div>
