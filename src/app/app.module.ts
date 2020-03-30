@@ -9,6 +9,8 @@ import { AddTaskComponent } from './add-task/add-task.component';
 import { TodoTaskComponent } from './todo-task/todo-task.component';
 import { DoneTaskComponent } from './done-task/done-task.component';
 import { TaskService} from './services/task.service';
+import { CheckedDirective } from './shared/checked.directive';
+import { ShowDateDirective } from './shared/show-date.directive';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { TaskService} from './services/task.service';
     AddTaskComponent,
     TodoTaskComponent,
     DoneTaskComponent,
+    CheckedDirective,
+    ShowDateDirective,
   ],
   imports: [
     BrowserModule,
