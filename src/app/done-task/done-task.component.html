@@ -1,7 +1,7 @@
 <div>Done Task list:</div>
 <ul *ngFor="let taskDone of taskListFromDoneTaskComponent">
   <li>
-    {{taskDone}}
+    {{taskDone.name}}
   </li>
 </ul>
 <p>Done {{taskListFromDoneTaskComponent.length}} tasks</p>
