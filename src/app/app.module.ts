@@ -11,6 +11,7 @@ import { DoneTaskComponent } from './done-task/done-task.component';
 import { TaskService} from './services/task.service';
 import { CheckedDirective } from './shared/checked.directive';
 import { ShowDateDirective } from './shared/show-date.directive';
+import { TransformTaskPipe } from './shared/transform-task.pipe';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ShowDateDirective } from './shared/show-date.directive';
     DoneTaskComponent,
     CheckedDirective,
     ShowDateDirective,
+    TransformTaskPipe,
   ],
   imports: [
     BrowserModule,
