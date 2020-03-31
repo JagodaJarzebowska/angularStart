@@ -1,8 +1,8 @@
 <p [ngStyle]="{color: getColor()}">ToDo Task {{taskListFromToDoTaskComponent.length}}</p>
 <ng-container *ngIf="taskListFromToDoTaskComponent.length > 0; else noTask">
-  <ul *ngFor="let task of taskListFromToDoTaskComponent; let odd = odd">
+  <ul *ngFor="let task of taskListFromToDoTaskComponent | sortByName; let odd = odd">
     <li appShowDate [date]="task.createDate" [ngClass]="{'odd-li': odd, 'last-li': taskListFromToDoTaskComponent.length === 1}">
-      {{task.name | transformTask}}
+      {{task.name | transformTask: '!'}}
       <button type="button" class="btn btn-success" (click)="isDone(task)">Done</button>
       <button type="button" class="btn btn-danger" (click)="deleteTask(task)">Delete</button>
     </li>
