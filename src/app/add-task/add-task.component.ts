@@ -1,5 +1,5 @@
-import { Component, OnInit, Output, EventEmitter} from '@angular/core';
-import { TaskService} from '../services/task.service';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { TaskService } from '../services/task.service';
 import { Task } from '../models/task.model';
 
 @Component({
@@ -18,11 +18,11 @@ export class AddTaskComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addNewTask(){
+  addNewTask() {
     //this.emitTaskFromAddTaskComponent.emit(this.newTask);
-    const tasks: Task = ({name: this.newTask, createDate: new Date()});
+    const tasks: Task = ({ name: this.newTask, createDate: new Date() });
     this.taskService.addNewTaskFromTaskService(tasks);
-    this.newTask='';
+    this.newTask = '';
   }
 
 }
