@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 export class HttpTesterComponent implements OnInit {
 
 
-  // allPost$: Observable<Array<Post>>;
+  allPosts$: Observable<Array<Post>>;
 
   myPosts;
   singlePost;
@@ -20,6 +20,11 @@ export class HttpTesterComponent implements OnInit {
   constructor(private httpTesterService: HttpTesterService) { }
 
   ngOnInit(): void {
+  }
+
+
+  display(){
+    this.allPosts$ = this.httpTesterService.getPosts();
   }
 
   getPosts() {
