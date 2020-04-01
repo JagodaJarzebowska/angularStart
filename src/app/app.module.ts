@@ -13,7 +13,9 @@ import { CheckedDirective } from './shared/checked.directive';
 import { ShowDateDirective } from './shared/show-date.directive';
 import { TransformTaskPipe } from './shared/transform-task.pipe';
 import { SortByNamePipe } from './shared/sort-by-name.pipe';
-
+import { HttpTesterComponent } from './http-tester/http-tester.component';
+import { HttpTesterService } from './http-tester/http-tester.service';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,14 +26,16 @@ import { SortByNamePipe } from './shared/sort-by-name.pipe';
     ShowDateDirective,
     TransformTaskPipe,
     SortByNamePipe,
+    HttpTesterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatInputModule,
     FormsModule,
+    HttpClientModule,
   ],
-  providers: [TaskService],
+  providers: [TaskService, HttpTesterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
