@@ -9,7 +9,6 @@ import { environment } from 'src/environments/environment';
 })
 export class HttpTesterService {
 
-
   private url: string = `${environment.apiUrl}`
 
   constructor(private http: HttpClient) { }
@@ -19,8 +18,16 @@ export class HttpTesterService {
   }
 
   getPostsAsResponse(): Observable<HttpResponse<Response>> {
-    return this.http.get<Response>(this.url, 
+    return this.http.get<Response>(this.url,
       { observe: 'response' });
+  }
+
+  getPostUseNext(): Observable<Array<Post>> {
+    return this.http.get<Array<Post>>(this.url);
+  }
+
+  getPostUseObs(): Observable<Array<Post>>{
+    return this.http.get<Array<Post>>(this.url);
   }
 
   getPostById(id: number): Observable<Post> {
@@ -44,7 +51,7 @@ export class HttpTesterService {
     return this.http.delete(this.url + '/' + id);
   }
 
-  changePost(post: Post):Observable<Post>{
-    return this.http.patch(this.url+'/'+post.id, post);
+  changePost(post: Post): Observable<Post> {
+    return this.http.patch(this.url + '/' + post.id, post);
   }
 }

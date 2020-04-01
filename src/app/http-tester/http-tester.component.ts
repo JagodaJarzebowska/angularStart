@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpTesterService } from './http-tester.service';
 import { Post } from '../models/post.module';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-http-tester',
@@ -14,16 +14,39 @@ export class HttpTesterComponent implements OnInit {
 
   allPosts$: Observable<Array<Post>>;
 
+  private postSub = new BehaviorSubject<Array<Post>>([]); 
+  postsObs$ = this.postSub.asObservable();
+
+
   myPosts;
   singlePost;
 
-  constructor(private httpTesterService: HttpTesterService) { }
+  constructor(private httpTesterService: HttpTesterService) {
+    this.getPostUseObs();
+   }
 
   ngOnInit(): void {
+    
+  }
+ /**
+  * use next and BehaviorSubject !!! 
+  */
+  getPostUseObs(){
+    this.httpTesterService.getPostUseObs().subscribe( result => {
+      this.postSub.next(result);
+      this.allPosts$ = this.postsObs$;
+    })
   }
 
+  getPostUseNext(){
+    this.httpTesterService.getPostUseNext().subscribe(result => {
+      this.postSub.next(result);
+      console.log(this.postSub.value);
+    })
+  }
 
   display(){
+
     this.allPosts$ = this.httpTesterService.getPosts();
   }
 
