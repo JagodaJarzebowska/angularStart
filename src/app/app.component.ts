@@ -1,4 +1,6 @@
-import{Component}from'@angular/core';
+import{Component, Output, EventEmitter}from'@angular/core';
+import { error } from 'protractor';
+
 
 @Component({
 selector: 'app-root',
@@ -7,5 +9,10 @@ styleUrls: ['./app.component.css']
 })
 export class AppComponent {
 
+    hidePanel: boolean = false;
 
+
+    changeHidden(event){
+        this.hidePanel = event;
+    }
 }
