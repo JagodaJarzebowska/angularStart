@@ -15,5 +15,8 @@
     <!--    <app-done-task [taskListFromDoneTaskComponent]="doneTaskListFromAppComponent"></app-done-task>-->
     <app-done-task></app-done-task>
   </div>
-  <app-http-tester></app-http-tester>
+
+<app-hide-panel [hideSectionParam]="hidePanel" [title]="'Tytuł'" (hideEvent)="changeHidden($event)"></app-hide-panel>
+
+  <app-http-tester [hidden]="hidePanel"></app-http-tester>
 </div>
