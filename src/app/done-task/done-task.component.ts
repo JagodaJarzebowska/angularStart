@@ -9,12 +9,11 @@ import { Task } from '../models/task.model';
 })
 export class DoneTaskComponent implements OnInit {
 
-  //  @Input()
   taskListFromDoneTaskComponent: Array<Task> = [];
 
   constructor(private taskService: TaskService) {
-    this.taskService.getDoneTaskListObs().subscribe((result: Array<Task>) => {
-      this.taskListFromDoneTaskComponent = result;
+    this.taskService.getTaskListObs().subscribe((result: Array<Task>) => {
+      this.taskListFromDoneTaskComponent = result.filter(t => t.isDone ===true);
     })
   }
 

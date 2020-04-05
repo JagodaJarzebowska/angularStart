@@ -5,40 +5,35 @@ import { Task } from '../models/task.model';
 @Injectable()
 export class TaskService {
 
-  private taskListFromTaskService: Array<Task> = [];
-  private doneTaskListFromTaskService: Array<Task> = [];
-
   private taskListObs = new BehaviorSubject<Array<Task>>([]);
-  private doneTaskListObs = new BehaviorSubject<Array<Task>>([]);
 
   constructor() {
-    this.taskListObs.next(this.taskListFromTaskService);
+    
   }
 
   addNewTaskFromTaskService(task: Task) {
     if (task !== undefined) {
-      this.taskListFromTaskService.push(task);
-      this.taskListObs.next(this.taskListFromTaskService);
+      const list = this.taskListObs.getValue();
+      list.push(task);
+      this.taskListObs.next(list);
     }
   }
 
   deleteTaskFromTaskService(task: Task) {
-    this.taskListFromTaskService = this.taskListFromTaskService.filter(data => data !== task);
-    this.taskListObs.next(this.taskListFromTaskService);
+    const list = this.taskListObs.getValue().filter(data => data !== task);
+    this.taskListObs.next(list);
   }
 
   isDoneFromTaskService(task: Task) {
-    this.doneTaskListFromTaskService.push(task);
-    this.deleteTaskFromTaskService(task);
-    this.doneTaskListObs.next(this.doneTaskListFromTaskService);
+    task.endDate = new Date();
+    task.isDone = true;
+    const list = this.taskListObs.getValue();
+    this.taskListObs.next(list);   // rozpropagowanie, info że w taskListObs są nowe elementy
   }
 
   getTaskListObs(): Observable<Array<Task>> {
     return this.taskListObs.asObservable();
   }
 
-  getDoneTaskListObs(): Observable<Array<Task>> {
-    return this.doneTaskListObs.asObservable();
-  }
 
 }

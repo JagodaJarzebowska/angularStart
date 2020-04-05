@@ -9,16 +9,11 @@ import { Task } from '../models/task.model';
 })
 export class TodoTaskComponent implements OnInit {
 
-  //  @Input()
   taskListFromToDoTaskComponent: Array<Task> = [];
-  // @Output()
-  //  emitDoneFromToDoTaskComponent = new EventEmitter<string>();
-  //  @Output()
-  //  emitRemoveFromToDoTaskComponent = new EventEmitter<string>();
 
   constructor(private taskService: TaskService) {
     this.taskService.getTaskListObs().subscribe((result: Array<Task>) => {
-      this.taskListFromToDoTaskComponent = result.slice();
+      this.taskListFromToDoTaskComponent = result.slice().filter(t => t.isDone ===false);
     })
   }
 
@@ -26,13 +21,10 @@ export class TodoTaskComponent implements OnInit {
   }
 
   deleteTask(task: Task) {
-    // this.emitRemoveFromToDoTaskComponent.emit(task);
     this.taskService.deleteTaskFromTaskService(task);
   }
 
   isDone(task: Task) {
-    // this.emitDoneFromToDoTaskComponent.emit(task);
-    task.endDate = new Date();
     this.taskService.isDoneFromTaskService(task);
   }
 

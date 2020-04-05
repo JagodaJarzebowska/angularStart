@@ -10,8 +10,6 @@ import { Task } from '../models/task.model';
 export class AddTaskComponent implements OnInit {
 
   newTask: string;
-  //@Output()
-  //emitTaskFromAddTaskComponent = new EventEmitter<string>();
 
   constructor(private taskService: TaskService) { }
 
@@ -19,8 +17,7 @@ export class AddTaskComponent implements OnInit {
   }
 
   addNewTask() {
-    //this.emitTaskFromAddTaskComponent.emit(this.newTask);
-    const tasks: Task = ({ name: this.newTask, createDate: new Date() });
+    const tasks: Task = ({ name: this.newTask, createDate: new Date(), isDone: false });
     this.taskService.addNewTaskFromTaskService(tasks);
     this.newTask = '';
   }
